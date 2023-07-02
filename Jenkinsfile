@@ -7,7 +7,7 @@ pipeline {
           }
 
           environment {
-            DOCKERHUB_CREDENTIALS = credentials('mezghichdokub_dockerhub')
+            DOCKERHUB_CREDENTIALS = credentials('mezghichdokub-lab-jenkins-spring')
            }
 
 
@@ -32,7 +32,7 @@ pipeline {
 
                 steps {
                     
-                   sh 'docker build -t spring_app_july2023_mezghich .'
+                   sh 'docker build -t spring_app_july2023_amine_mezghich .'
                 
                       }
 
@@ -44,13 +44,13 @@ pipeline {
 
                  steps {
 
-                  sh 'docker tag spring_app_july2023_mezghich mezghichdokub/spring_app_july2023'
+                  sh 'docker tag spring_app_july2023_amine_mezghich mezghichdokub/spring_app_july2023_amine_mezghich'
 
                   sh 'echo $DOCKERHUB_CREDENTIALS_PSW \
                   | docker login -u $DOCKERHUB_CREDENTIALS_USR \
                   --password-stdin'
 
-                  sh 'docker push mezghichdokub/spring_app_july2023'
+                  sh 'docker push mezghichdokub/spring_app_july2023_amine_mezghich'
 
                        }
                 
